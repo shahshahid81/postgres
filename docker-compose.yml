@@ -1,0 +1,11 @@
+services:
+  postgres-db:
+    image: postgres:17
+    container_name: postgres-db
+    env_file:
+      - .env
+    ports:
+      - '5432:5432'
+    restart: "no"
+    volumes:
+      - ./init-scripts/init_data.sql:/docker-entrypoint-initdb.d/init_data.sql:ro
